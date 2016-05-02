@@ -12,21 +12,22 @@ public class Main {
 
 	public static void main(String[] args) {
 		List<Molecule> molecules;
-		double qmThreshold = 5.0;
-		double bufferThreshold = 11.0;
+		double qmThreshold = 2.0;
+		double bufferThreshold = 5.0;
 		
 		
 		Molecule core = new Molecule(0);
 		
-		DistanceCalculator distanceCalculator = new DistanceCalculator();
-		
+		ClosestDistanceCalculator closestDistanceCalculator = new ClosestDistanceCalculator();
 		
 		long creatingListStart = System.currentTimeMillis();
 		molecules = 
-		IntStream.range(0,1_000)
-				// .parallel()
+		IntStream.range(0,10_000_000)
+				 .parallel()
 				 .mapToObj(i -> new Molecule(i))
 				 .collect(Collectors.toList());
+		
+
 		
 		long creatingListEnd = System.currentTimeMillis();
 		System.out.println("Time creating list in s " + ((creatingListEnd-creatingListStart)/1000.0));
@@ -39,7 +40,8 @@ public class Main {
 				 .parallel()
 				 .collect(
 						 Collectors.groupingBy(molecule -> {
-							 double distance = distanceCalculator.calculateDistance(core, molecule);
+							 double distance = closestDistanceCalculator.calculateClosestDistance(core, molecule);
+							// System.out.println(distance);
 							 if (distance < qmThreshold) return QMZONE;
 							 	else if (distance > bufferThreshold) return MM;
 							 		else return BUFFERZONE;
