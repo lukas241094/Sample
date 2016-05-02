@@ -9,9 +9,9 @@ public class Atom implements AtomInterface{
 	private final double z;
 	public Atom() {
 		Random random = new Random();
-		this.x = random.nextDouble()*20;
-		this.y = random.nextDouble()*20;
-		this.z = random.nextDouble()*20;
+		this.x = random.nextDouble()*10;
+		this.y = random.nextDouble()*10;
+		this.z = random.nextDouble()*10;
 	}
 	public double getX() {
 		return x;

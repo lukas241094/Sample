@@ -7,7 +7,9 @@ version = '1.0'
 jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
+                   'Implementation-Version': version,
+'Main-Class':'org.gradle.Main'
+
     }
 }
 
@@ -31,4 +33,9 @@ uploadArchives {
            dirs 'repos'
        }
     }
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
 }

@@ -13,7 +13,7 @@ public class Molecule implements MoleculeInterface {
 	
 	public Molecule(int i){
 		Random random = new Random();
-		for(int j=0; j<= 3; j++) atoms.add(new Atom());
+		for(int j=0; j <= 10; j++) atoms.add(new Atom());
 		this.index = i;
 	}
 

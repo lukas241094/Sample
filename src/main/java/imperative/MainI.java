@@ -16,16 +16,16 @@ import org.gradle.Region;
 public class MainI {
 
 	public static void main(String[] args) {
-		List<MoleculeI> molecules = new ArrayList();
+		List<Molecule> molecules = new ArrayList();
 		double qmThreshold = 2.0;
 		double bufferThreshold = 5.0;
 		ClosestDistanceCalculatorImp closestDistanceCalculator = new ClosestDistanceCalculatorImp();
 
 		
-		for(int i=0;i<10_000_000;i++){
-			molecules.add(new MoleculeI(i));
+		for(int i=0;i<10000;i++){
+			molecules.add(new Molecule(i));
 		}
-		MoleculeI core = new MoleculeI(0);
+		Molecule core = new Molecule(0);
 		
 		System.out.println("List created");
 		System.out.println("Number of molecules "+ molecules.size());
@@ -33,11 +33,11 @@ public class MainI {
 
 		long start = System.currentTimeMillis();
 		
-		Map<Region, List<MoleculeI>> regions = new HashMap<>();
-		List<MoleculeI> qmRegion = new ArrayList();
-		List<MoleculeI> bufferRegion = new ArrayList();
-		List<MoleculeI> mmRegion = new ArrayList();
-		for (MoleculeI molecule : molecules){
+		Map<Region, List<Molecule>> regions = new HashMap<>();
+		List<Molecule> qmRegion = new ArrayList();
+		List<Molecule> bufferRegion = new ArrayList();
+		List<Molecule> mmRegion = new ArrayList();
+		for (Molecule molecule : molecules){
 			
 			double distance = closestDistanceCalculator.calculateClosestDistance(core, molecule);
 			if(distance < qmThreshold){
