@@ -10,14 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
+
 import imperative.ClosestDistanceCalculatorImp;
 
 public class MethodStarter {
 	
-	public void calculateStreamParallelFunctionalCDC(List<Molecule> molecules,double qmThreshold, double bufferThreshold){
+	public void calculateStreamParallelFunctionalCDC(List<Molecule> molecules,double qmThreshold, double bufferThreshold,Molecule core){
 		
 		ClosestDistanceCalculator closestDistanceCalculator = new ClosestDistanceCalculator();
-		Molecule core = new Molecule(0);
 		
 		long one = System.currentTimeMillis();
 		Map<Region, List<Molecule>> regions =
@@ -43,11 +44,10 @@ public class MethodStarter {
 	
 	
 	
-	
-	public void calculateStreamPrallelImpCDC(List<Molecule> molecules,double qmThreshold, double bufferThreshold){
+
+	public void calculateStreamPrallelImpCDC(List<Molecule> molecules,double qmThreshold, double bufferThreshold,Molecule core){
 		
 		ClosestDistanceCalculatorImp closestDistanceCalculatorImp = new ClosestDistanceCalculatorImp();
-		Molecule core = new Molecule(0);
 		
 		long one = System.currentTimeMillis();
 		Map<Region, List<Molecule>> regions =
@@ -72,10 +72,10 @@ public class MethodStarter {
 	}
 	
 	
-	public void calculateStreamSerial(List<Molecule> molecules,double qmThreshold, double bufferThreshold){
+
+	public void calculateStreamSerial(List<Molecule> molecules,double qmThreshold, double bufferThreshold,Molecule core){
 
 		ClosestDistanceCalculator closestDistanceCalculator = new ClosestDistanceCalculator();
-		Molecule core = new Molecule(0);
 		
 		long one = System.currentTimeMillis();
 		Map<Region, List<Molecule>> regions =
@@ -99,10 +99,11 @@ public class MethodStarter {
 		System.out.println("");
 	}
 	
-	public void calculateImperative(List<Molecule> molecules,double qmThreshold, double bufferThreshold){
+	
+
+	public void calculateImperative(List<Molecule> molecules,double qmThreshold, double bufferThreshold,Molecule core){
 		ClosestDistanceCalculatorImp closestDistanceCalculatorImp = new ClosestDistanceCalculatorImp();
 		long start = System.currentTimeMillis();
-		Molecule core = new Molecule(0);
 		Map<Region, List<Molecule>> regions = new HashMap<>();
 		List<Molecule> qmRegion = new ArrayList();
 		List<Molecule> bufferRegion = new ArrayList();
